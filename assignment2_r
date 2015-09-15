@@ -1,0 +1,75 @@
+DS 710
+R Programming Assignment
+Homework 2:  Control Flow 
+Halee Mason
+Submit your R code to parts a-c to GitHub.  
+
+a.
+# DS 710 - R Programming Assignment Homework 2:  Control Flow 
+
+# Download the data set airport.csv.  
+# Read it into R, attach the data, and 
+ 
+myairport = read.csv(file="C:/Users/halee.mason/Documents/GitHub/ds710assignment2/airport.csv", header=TRUE)
+scheduled <- myairport$Scheduled.Departures # After attaching the variables to each colunm header,
+performed <- myairport$Performed.Departures # Save all numbers to a variable
+passengers <- myairport$Passengers
+airport <- myairport$Airport
+
+#head(myairport) # look at the first few lines of data to  see the format of the data. 
+#attach(myairport) # Attach data
+
+# Print a list of airports at which the number of scheduled departures 
+# was less than the number of departures performed.
+
+# List of airports with fewer scheduled departures
+total_late_passengers = 0
+
+for(row in 1:125){ #iterate over Scheduled.Departures aka length(Scheduled.Departures), but in this case I know there are 125 rows
+  air <- airport[row]
+  perf <- performed[row]
+  sched <- scheduled[row] #renamed some variables
+  
+  if(sched > perf){ # check if Scheduled.Departures is less than Performed.Departures 
+    print(air)
+    total_late_passengers = total_late_passengers + passengers[row]
+
+  } # end if Scheduled.Departures is less than Performed.Departures 
+} # end iteration over departing planes
+
+print(total_late_passengers)
+
+b. Copy and paste the list of airports (for part b) 
+[1] WILLOW RUN
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] MC CARRAN INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] MIAMI INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] FT LAUDERDALE INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] JOHN F KENNEDY INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] ORLANDO INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] SALT LAKE CITY INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] ANCHORAGE INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] LOCKBURN AFB
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] SOUTHWEST
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] INDIANAPOLIS INTL
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] DAYTONA BEACH REG
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] GENERAL LYMAN FIELD
+134 Levels: ADAMS FIELD AKRON-CANTON ALBANY COUNTY ALBUQUERQUE INTL ALLENTOWN-BETHEHEM ... WILLOW RUN
+[1] EPPLEY AIRFIELD
+
+c. and total number of passengers (for part c) into a separate text file and submit it to GitHub.
+print(total_late_passengers)
+[1] 51463187
+
+
